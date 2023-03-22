@@ -1,0 +1,30 @@
+*** API
+
+- Run the script create-projects-osx.sh to generate the project
+
+- Configure the properties in API
+
+- Create Domain (Model) Activity
+
+- Use NuGet to install Sqlite framework into Persistence
+
+- Create DataContext inside Persistence and add this Services to program
+
+- Install dotnet-ef
+ + dotnet tool install --global dotnet-ef --version 7.0.3
+
+- Install Microsoft.EntityFrameworkCore.Design in API folder
+
+- dotnet ef migrations add InitialCreate -s API -p Persistence
+ + Migrations: generate code that create table database for Domain Activity with all elements (columns) have inside
+
+- using: dispose code (clean up memory)
+
+- Create Seed.cs for dummy data inside Persistence
+
+dotnet --no-hot-reload : to run .net app without hotreload
+
+- Add API Controller
+ + Create ActvitiesController: to implement api call (GET...)
+
+dotnet new gitignore : create gitignore file
