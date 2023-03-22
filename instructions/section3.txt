@@ -1,0 +1,25 @@
+*** Client
+1/ Create-react-app
+2/ React project files
+3/ React concepts
+4/ React Dev tools
+5/ Typescript
+6/ Axios
+7/ Semantic-ui
+
+reactjs.org
+
+- Generate React client-app
+ + npx create-react-app client-app --use-npm --template typescript
+
+- Install axios for client-app
+
+- Add CORS for api to do api call from client
+ + Add CorsPolicy in Program.cs
+
+https://semantic-ui.com/
+https://react.semantic-ui.com/
+
+npm install semantic-ui-react semantic-ui-css
+
+- remove <React.StrictMode> in index.tsx

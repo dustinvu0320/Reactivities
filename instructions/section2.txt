@@ -1,4 +1,15 @@
 *** API
+1/ Intro to Clean Architecture
+2/ Creating .net project
+3/ Project Architecture
+4/ dotnet CLI
+5/ .NET project files
+6/ Running the .net app
+7/ Entity framework
+8/ Seeding Data
+9/ Code first migrations
+10/ Postman
+11/ Git for source code
 
 - Run the script create-projects-osx.sh to generate the project
 
