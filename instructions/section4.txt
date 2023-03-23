@@ -1,0 +1,26 @@
+*** CRUD App
+1/ Clean Architecture pattern
+2/ CQRS + Mediator pattern
+3/ Creating handlers for the CRUD operations
+
+- Learn Clean Architecture
+
+- Learn CQRS pattern
+- Install Mediator
+ + MediatR.Extensions.Microsoft.DependencyInjection from NuGet in Application
+
+- Create Activities folder in Application: Generate code for CRUD 
+ + Store all code to fetch data by calling api
+
+- Query return values
+- Command do not return
+
+- Request api will be sent to API Controller then will process after by fetching data from Application
+
+- Install automapper from NuGet for Application
+
+- Create Extensions folder to store code for Extensions
+ + Move some builder.Services..... code extensions to clean up
+
+- CancellationToken use to cancel task processing if runtime is out
+ + Pass token to handler to cancel the api call
