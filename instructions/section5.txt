@@ -1,0 +1,40 @@
+*** CRUD app in React
+1/ Folder structure
+2/ Typescript interfaces
+3/ Semantic UI components
+4/ Basic forms in React
+5/ CRUD
+
+- Learn file structure https://legacy.reactjs.org/docs/faq-structure.html
+
+- Restructure all files into folder structure
+
+- Access swagger to go to api endpoint list
+http://localhost:5000/swagger/index.html
+
+- Convert json type to ts https://transform.tools/json-to-typescript
+ + Generate Activity interface in client-app
+ + Specify type of data (typescript)
+
+- Add NavBar
+
+- Learn Semantic UI components to shortcut css styling
+
+- Learn to pass down properties from different components
+interface Props {
+  activities: Activity[];
+}
+export default function ActivityDashboard({activities}: Props) 
+
+- Create ActivityList as child components to ActivityDashboard
+
+- Use this Card https://react.semantic-ui.com/views/card/#types-card
+for ActivityDetails
+
+- Pass down all variables and functions from parent App.tsx to child components
+ + Handle button
+
+- Install uuid for client-app
+ + Help to auto generate new id for object (for CREATE)
+
+- Set up all CRUD functions work properly in local (not in API yet)
