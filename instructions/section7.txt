@@ -1,0 +1,25 @@
+*** MobX
+1/ Introduce State management
+2/ MobX
+3/ Mobx React Lite
+4/ React Context
+
+- WHY MobX?
+ + Easy to use
+ + Integrate well with Typescript (written in Typescript)
+
+- Learn MobX about observable, action, makeAutoObservable
+
+- Learn MobX React Lite observer to make MobX state auto update
+export default observer(App);
+
+- Install MobX
+npm install mobx mobx-react-lite
+
+- Refactor App.ts code to centralized store MobX
+ + No need to pass down all properties anymore since we store in MobX
+ + Move all CRUD code into MobX Store
+
+- Make sure to use observer to make functions observable by changing
+
+- Convert activities array into map object
