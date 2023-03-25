@@ -1,0 +1,11 @@
+*** Axios
+1/ Configure Axios
+2/ Using generic types
+3/ Using Axios interceptors
+4/ Hooking up all our requests to the API
+
+- Generate agent.ts inside app api
+ + Implement all axios requests for api fetch
+
+- Set up sleep for loading activities using axios.interceptors
+ + Create LoadingComponent for this
