@@ -1,0 +1,31 @@
+*** Routing
+1/ Why do we need a router?
+2/ React-Router
+3/ React Router API
+4/ History
+
+- Install React Router
+https://reactrouter.com/en/main/routers/picking-a-router
+npm install react-router-dom
+
+- Create Routes.tsx component that contains all routes
+https://reactrouter.com/en/main/routers/create-browser-router
+
+- Learn <Outlet />
+
+- NavLink to focus on active
+
+- Add NavLink or Link to all buttons and clickable things to move to different routes
+
+- Move all activities properties from local to routes api
+
+- const {id} = useParams();
+ + to get id from route parameter
+
+- Might use "!" to turn off Typescript functionality (NOT RECOMMEND)
+
+- Learn Reset state https://react.dev/learn/preserving-and-resetting-state
+ + Since by default, React preserves state of a component while staying in the same position
+ + Resetting state with a key (option 2)
+
+- Learn useNavigate, useLocation
