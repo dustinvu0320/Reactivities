@@ -1,0 +1,8 @@
+*** Styling the UI
+1/ Improve the UI
+2/ Semantic UI React
+
+- Learn Array.reduce in JS to group all activities by date
+
+- Add calendar React
+npm install react-calendar @types/react-calendar
