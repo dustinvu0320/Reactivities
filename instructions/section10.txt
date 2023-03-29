@@ -1,0 +1,62 @@
+*** Error Handling
+1/ Validation
+2/ Handling HTTP Error Responses
+3/ Handling Exceptions
+4/ Custom middleware
+5/ Using Axios interceptors
+
+- 1 way to validate requests is data annotations inside Domain
+ + https://learn.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-7.0#automatic-http-400-responses
+
+** Should do validation in Application instead of Domain
+- Fluent Validation in Application
+ + Install fluentvalidation on NuGet
+ + Learn RuleFor and add FluentValidation to code
+  https://docs.fluentvalidation.net/en/latest/
+
+- Make sure to add configuration for everything in Extensions
+
+- Exceptions are heavy, and ideally, avoid using Exceptions for program flow or control flow
+
+- Handle API responses
+ + API Controllers to add conditions for Result object
+
+- Create Result.cs object in Application.Core
+ +  -> generate a Result object for success or failure sent from API Controllers
+ + Refactor all code using Result object to pass on handle api responses
+ + Check for each scenario might happen such as null, failure, success,...
+
+- Create AppException.cs object in Application.Core
+ + Return exception from Middleware
+ https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-7.0
+
+- Create Middleware folder in API for Middleware pipeline in webapp
+ + Create ExceptionMiddleware to generate API middleware exception
+ + Add this middleware into Program.cs
+
+- Install React Toastify to add nofitications for our webapp 
+npm install react-toastify
+
+- Generate all types of 400 & 500 errors handling in client-app
+
+- Handle not found 404
++ Learn '*' for any url link not-found for the webapp
+{path: '*', element: <Navigate replace to='/not-found' />},
+
+- Handle 400 errors
+ + If BadRequest return toast error string
+ + If ValidationError: get a string array of errors then return error messages from array
+
+- Handle 500 errors
+ + Create commonStore to store errors in MobX store
+ + Send errors to Store then navigate to ServerError page
+
+- Handle invalid GUID
+ + Navigate to not-found page
+
+
+** Delete database
+- Back to Main repository
+dotnet ef database drop -s API -p Persistence
+- Run dotnet again in API (will generate database again)
+dotnet watch --no-hot-reload
