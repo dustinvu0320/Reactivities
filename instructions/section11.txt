@@ -1,0 +1,25 @@
+*** Forms
+1/ Forms with Formik
+2/ Validation with Formik/Yup
+3/ Creating reuseable form inputs
+
+- https://formik.org/
+npm install formik
+
+- Add Formik into ActivityForm
+ + Make sure to use enableReinitialize to save data after re-initialize
+
+- Learn Form & Field from Formik (help reduce code)
+
+- Install Yup for ValidationSchema for Formik
+npm install yup
+npm install @types/yup --save-dev
+
+- Create common folder, then form folder
+ + Create reuseable code for MyTextInput, TextArea, SelectInput
+
+- Use React Datepicker for datetime calendar for DateInput
+npm install react-datepicker
+npm install @types/react-datepicker --save-dev
+
+- Install date-fns to handle date corrections
