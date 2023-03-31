@@ -1,0 +1,34 @@
+*** Identity
+1/ ASPNET Core Identity
+2/ JWT Token Authentication
+3/ Login/Register
+4/ Authenticated requested
+
+- Install ASPNETCORE Identity package to Domain by NuGet
+ + Use this Identity for our AppUser
+
+- Use to restore all package installed
+dotnet restore
+
+- Install migrations for data AppUser in Persistence
+dotnet ef migrations add IdentityAdded -p Persistence -s API
+
+- Create user DTOs
+
+- Generate AccountController to implement api request for User
+
+- Create a token service
+ + Create TokenService.cs and use Claims Security
+ + Install System.IdentityModel.Tokens.Jwt for API on NuGet
+
+- Install AspNetCore.Authentication.JwtBearer to authenticate 
+
+- Store secret in development
+
+- Add an Authentication Policy for Controller Builder in Program.cs
+
+- Create HttpPost for register in AccountController
+
+- Add data annnotations into RegisterDto object for validate password
+
+- Create HttpGet for getting current user in AccountController
