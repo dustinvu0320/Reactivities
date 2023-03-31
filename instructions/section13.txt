@@ -1,0 +1,33 @@
+*** Client Side login & registration
+1/ Axios Inteceptors
+2/ MobX reactions
+3/ Form submission errors
+4/ Modals
+
+- Create a LoginForm.tsx for client side
+ + Create Route & Http requests in agent.ts for axios login & register
+
+- Create another UserStore state to save user in MobX store
+
+- Display errors in LoginForm
+ + Learn setErrors of Formik that catch errors from api and set to client side
+
+- After submit login succeed
+ + Set token to CommonStore and set user to UserStore
+ + Navigate to Activities page
+
+- Update HomePage and NavBar
+ + Add Login & Logout functionalities
+
+- Persist token for the user login
+ + Use MobX Reaction
+ + In App.tsx, use useEffect to get token user everytime refresh page and then fetch all activities again
+
+- Sending up the token with request by using axios.interceptors.request
+
+- Create ModalContainer for Login & Register
+
+- Create RegisterForm almost as same as LoginForm
+
+- Set ValidationError into RegisterForm
+ + Back to AccountController API then add ModelState Error and return back ValidationProblem object to show errors in client-app response
