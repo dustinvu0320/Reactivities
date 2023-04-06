@@ -1,0 +1,56 @@
+*** Entity Framework Relationship
+1/ EF Relationships
+2/ Loading related entities
+3/ AutoMapper queryable extensions
+4/ Adding an infrastructure project
+
+- DON'T use the convention to create join table for Activity and AppUser
+
+- Instead, do manually to create a join table
+ + Create ActivityAttendee table in Domain
+ + Update DataContext in Persistence to add this join table
+
+- Create new class library for infrastructure and add solution
+dotnet new classlib -n Infrastructure
+dotnet sln add Infrastructure 
+
+- Inside Infrastructure, add reference to Application
+cd Infrastructure
+dotnet add reference ../Application
+
+- Insde API, add reference to Infrastructure
+cd API
+dotnet add reference ../Infrastructure
+
+- Create an interface IUserAccessor in Application to let Infrastructure use this inside
+
+- Always make sure to add services to API
+
+- In Application, in Create Activities
+ + Get user that create activity and then add to Activity as well
+
+- Learn to load related entities
+https://learn.microsoft.com/en-us/ef/ef6/querying/related-data
+
+- Shaping the related data by using AutoMapper
+
+- Add the attendance handler
+ + Add IsCancelled to Acitivity table and add migrations as well
+ dotnet ef migrations add AddCancelledProperty -p Persistence -s API 
+
+- Create UpdateAttendance in Application
+ + To Handle attendance for attendees
+ + if host, then set !IsCancelled
+ + if not host, remove from attendees list
+ + if no attendees, then create one and add to list
+
+- Add custom auth policy to make sure only host allow to edit the activity
+ + Create IsHostRequirement inside Infrastructure Security
+ + Add this services inside IdentityServiceExtensions to add policy "IsActivityHost" for authorization (Make sure to use AsNoTracking memory method)
+ + Add this policy to Authorize EditActivity in ActivitiesController API
+
+- Update new DummyData to Seed.cs again
+ + Delete a table at main dir
+ dotnet ef database drop -p Persistence -s API
+ + Run dotnet in API again to generate new database
+ dotnet watch --no-hot-reload 
