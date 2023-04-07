@@ -1,0 +1,20 @@
+*** Features - Client side attendance
+1/ Implement the attendance feature in the client app
+
+- Create Profile interface in app/models 
+
+- Create ActivityListItemAttendee to fetch attendees info on activities page
+
+- Update details components by passing Attendees from activity
+
+- Conditionally rendering the buttons
+ + Simply get data from API and render on UI
+
+- Create updateAttendance in api agent.ts to help add or remove users from attendees list
+
+-  Update the create and edit methods
+
+- Add a cancel activity method by creating cancelActivityToggle function in activityStore
+
+- Add a popover for attendees
+ + Create ProfileCard for popover when hover the attendee image
