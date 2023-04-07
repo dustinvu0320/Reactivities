@@ -1,0 +1,34 @@
+*** API Image upload
+1/ Photo Storage options
+2/ Adding a photo upload service
+3/ Using the Cloudinary API 
+
+- Cloudinary: free cloud storage for image, .net integration
+https://cloudinary.com/documentation/dotnet_integration
+
+- Install CloudinaryDotNet for Infrastructure on NuGet
+
+- Add Cloudinary api key and secret to API appsettings.json file
+
+- Make sure Application won't know what we do with Cloudinary photo upload
+ + Create IPhotoAccessor in Application Interface
+ + Create PhotoAccessor : IPhotoAccessor in Infrastructure Photos to implement Cloudinary methods (Add/Delete)
+  * implement functions to add and delete photos over Cloudinary cloud account verification
+
+- Create Photo object in Domain database
+ + one to many relationship to AppUser (1 user - many photos)
+ + Add Photo to DataContext and add to Migrations Persistence
+
+- Adding the Add photo handler
+
+- Adding a photos controllers
+
+- Do the same thing for Delete method
+
+- Add SetMain photo feature
+
+- Create Details in Profiles Application and then add ProfilesController to API
+
+- Update mapping configuration from AppUser to Profiles.Profile
+
+- Create AttendeeDto to help remove photos collection from attendees list in Activity
