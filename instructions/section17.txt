@@ -1,0 +1,42 @@
+*** Client image upload
+1/ Adding a profile page
+2/ Displaying user photos
+3/ Adding a photo upload widget
+4/ React dropzone
+5/ React cropper
+6/ Setting main photo
+7/ Deleting photos
+
+- Create a profile page
+ + contains ProfileHeader
+ + contains ProfileContent
+
+- Learn about Tab.Pane to switch to different tabs of content
+
+- Create Photo interface and start working on fetch profile data from api
+
+- Create a ProfileStore on MobX Store
+
+- Render photos from profile for ProfileContent
+
+- Conditionally rendering the photo widget
+ + Create a function in profileStore to check if profile and currentUser are the same,
+ then be able to add photos or set main photos
+
+- Create PhotoUploadWidget for upload image
+
+- Install React dropzone library to help on drag & drop files
+npm install react-dropzone
+https://github.com/react-dropzone/react-dropzone
+ + Create PhotoWidgetDropzone to add function for react dropzone
+  * Get files from dropzone to set photo for preview
+
+- Install React Cropper library to help on resize image
+npm install react-cropper
+https://github.com/react-cropper/react-cropper
+
+- Add uploadPhoto method in agent api
+
+- Create uploadPhoto function in profileStore to send photo into api
+
+- Create setMainPhoto and deletePhoto methods
