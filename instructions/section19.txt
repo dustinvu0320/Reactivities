@@ -1,0 +1,46 @@
+*** SignalR
+1/ What is SignalR?
+2/ SignalR transports
+3/ SignalR client package
+
+- SignalR:
+ + Adds real-time web functionality to apps
+ + Connected clients receive content instantly
+ + Ideal for: Chat apps, dashboard, monitoring
+ + Transports: WebSockets, server-sent events, long polling
+
+- Create Comment table in Domain database and make relations with other tables
+ + Migration CommentEntity
+ dotnet ef migrations add CommentEnitityAdded -p Persistence -s API
+
+- Create CommentDto in Application and use MappingProfiles to map Comment Domain with CommentDto
+
+- Implement Create Comment Handler in Application (Command)
+
+- Implement List Comment Handler in Application (Query)
+
+- Add SignalR to API
+ + Create ChatHub for client to connect (comments) to SignalR Hub
+ + Add SignalR services to ApplicationServiceExtensions
+ + Add Configuration of ChatHub into our Program.cs // app.MapHub<ChatHub>("/chat");
+
+- Authenticate to SignalR (don't use Http in our API controller)
+ + Add another Authentication services in IdentityServiceExtensions for JwtBearerEvents
+
+- Add SignalR to client
+ + Create ChatComment interface in models as well as commentStore in MobX stores
+
+- Install SignalR in client-app
+npm install @microsoft/signalr
+
+- Add HubConnection in ActivityDetailedChat
+
+- Add AllowCredentials() policy in ApplicationServiceExtensions to allow CORS policy
+
+- Create function addComment in commentStore to help on comment feature to fetch comment data
+ + Work on ActivityDetailedChat
+
+- Resolve UTC date by adding 'Z' into createdAt when loadComments from database
+ comment.createdAt = new Date(comment.createdAt + 'Z');
+
+- Make sure to add function to clearSelectedActivity when move to different activity
