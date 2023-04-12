@@ -1,0 +1,31 @@
+*** Followers / Following Features
+1/ Implement the following feature from end to end
+2/ Self referencing many to many relationship
+
+- Create UserFollowing table in Domain and add to DataContext
+dotnet ef migrations add FollowingEntityAdded -p Persistence -s API
+
+- Add a handler for Following
+ + Create FollowToggle in Followers Application to handle data Implementation
+
+- Add FollowController to API so we'll be able to fetch data
+
+- Add some attributes of following feature for Profile in Application
+ + Use AutoMapper to get Count for Follower & Following
+
+- Create List in Profiles Application to get a list of followers 
+ + Add endpoint http for return this in FollowController API
+ + Refactor some code in AutoMapper to adds-on following feature
+
+- Add the UI for followers
+ + Start to add followers and following Count to each page we have
+
+- Add function updateFollowing in agent.ts to send http api request
+
+- Refactor to update following feature for attendee, activity, and profile Stores inside our app 
+
+- Add function listFollowings to fetch api request and get a list of following from Profile
+ + Create a ProfileFollowings components for ProfileContent
+
+- Use MobX reaction in Profile Page and Content
+ + Implement setActiveTab to get tab index of tab.pane
