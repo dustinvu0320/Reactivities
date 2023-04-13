@@ -1,0 +1,46 @@
+*** Paging, Sorting, and Filtering
+1/ Paging on the API & Client
+2/ Sorting on the API & Client
+3/ Filtering on the API & Client
+4/ IQueryable<T> : Query variable stores query commands
+
+- Create PagedList in Application Core to work on query pagination properties
+ + Return a page list
+
+- Create PagingParams to store MaxPageSize and set PageSize
+
+- Create HttpExtensions in API to help send Pagination Header response
+
+- Create HandlePagedResult function in BaseApiController so all Controllers can use this method
+
+- On client-app, create an interface Pagination in models
+ + Get pagination response from axios in agent.ts and set type get request for Activity is PaginatedResult
+
+* Learn about passing Params by using URLSearchParams
+https://nodejs.org/api/url.html#class-urlsearchparams
+
+- Create PagingParams in pagination.ts 
+ + Pass params of pageNumber and pageSize into http axios request api
+
+- Adding vertical paging
+ + Create function handleGetNext to help load more activities in ActivityDashboard
+
+- Adding infinite scrolling
+ + Install react infinite scroller in client side
+ npm install react-infinite-scroller
+ npm install @types/react-infinite-scroller
+ + Add InfiniteScroll into ActivityDashboard to work on this feature
+
+- Create new ActivityParams : PagingParams in Application Activities
+ + Contains attributes for IsGoing or IsHost or StartDate so we can work on Filtering
+
+- Client side Filtering
+ + Work on predicate for Filtering in activityStore
+ + Add reaction of MobX to reload data after Filtering
+
+- Work on ActivityFilters component to set predicate for UI
+
+- Create ActivityListItemPlaceholder in activities dashboard
+ + Work on Placeholder from semantic-ui to help Placeholder loading
+
+- [JsonIgnore] : create attribute to help for function but don't want to return for clientside
