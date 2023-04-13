@@ -1,0 +1,36 @@
+*** Challenge
+
+1. Create a new class called UserActivityDto in the Profiles folder (already done this part).
+
+2. Create a new class called ListActivities in the profile folder. This will be a handler and we
+want to return a list of activities based on a predicate and the username of the user whose profile we are looking at. Do not worry about paging this list to keep it simple. In this handler we want to return a list of UserActivityDto the user is attending and the predicate will either be:
+ - Activities in the past
+ - Activities the user is hosting
+ - The activities the user is going to in the future (default case)
+
+3. If you are using AutoMapper for your solution then you will need to map from an ActivityAttendee object to the UserActivityDto object.
+
+4. Add an endpoint in the Profiles Controller so the client can send a get request to “/api/ profiles/{username}/activities?predicate=‘thePredicate’”.
+
+5. Test the results using the 3 following pre-written requests in Postman.
+ - Add a method in the agent.ts to get the activities for a user based on the predicate
+
+6. Add an interface called UserActivity in the profile.ts class that matches the properties we
+return in this object from the API
+
+7. Add a property in the profile store for the UserActivities as well as a loading flag called
+‘loadingActivities’
+
+8. Add a method in the profiles store to load activities for a user that takes a username and
+the predicate as a parameter.
+
+9. Add a new component called ‘ProfileActivities’ where each profile activity is contained in
+its own card. This component should have 3 tabs to allow the user to select from: 
+ - Future activities
+ - Past activities
+ - Activities the user is hosting
+
+10. Add the ProfileActivities to the ProfileContent component.
+
+11. Test to make sure this works in the client. Should see the following results:
+ 
