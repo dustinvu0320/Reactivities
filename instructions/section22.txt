@@ -76,11 +76,14 @@
 - Update FLYIOConnectionString for services.AddDbContext in ApplicationServiceExtensions
 
 - Rebuild and push our app again to Docker Hub
+docker build -t dustinvu0320/reactivities:latest .
 
-- Deploy to fly.io (NOT WORK for arm Mac OS)
+- Deploy to fly.io (NOT WORK for arm64 OS (Mac))
   fly deploy
 
 - Use Github alternative way to deploy Docker image to fly.io
 https://github.com/docker/build-push-action
  + Create file docker-push.yml in workflows folder in .github folder
  + Store secrets username & password of DockerHub inside settings of our app on Github repository
+ + Run workflow for docker-push at Actions Gibhub repository
+  * This helps to push to Docker Hub using amd64 OS

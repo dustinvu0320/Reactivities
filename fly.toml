@@ -1,4 +1,4 @@
-# fly.toml file generated for reactivities-dv on 2023-04-14T13:09:02-05:00
+# fly.toml file generated for reactivities-dv on 2023-04-14T15:27:34-05:00
 
 app = "reactivities-dv"
 kill_signal = "SIGINT"
@@ -14,7 +14,6 @@ processes = []
   ASPNETCORE_URLS="http://+:8080"
   Cloudinary__CloudName="dapka6nad"
   Cloudinary__ApiKey="985799838921348"
-
 
 [[services]]
   internal_port = 8080
