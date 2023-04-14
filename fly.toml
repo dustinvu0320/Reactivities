@@ -1,0 +1,35 @@
+# fly.toml file generated for reactivities-dv on 2023-04-14T13:09:02-05:00
+
+app = "reactivities-dv"
+kill_signal = "SIGINT"
+kill_timeout = 5
+mounts = []
+primary_region = "dfw"
+processes = []
+
+[build]
+  image = "dustinvu0320/reactivities:latest"
+
+[env]
+  ASPNETCORE_URLS="http://+:8080"
+  Cloudinary__CloudName="dapka6nad"
+  Cloudinary__ApiKey="985799838921348"
+
+
+[[services]]
+  internal_port = 8080
+  processes = ["app"]
+  protocol = "tcp"
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443

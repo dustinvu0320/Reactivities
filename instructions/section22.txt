@@ -1,0 +1,86 @@
+*** Finishing touches and publishing
+1/ ScrollToTop
+2/ Client side route protection
+3/ Build the react app for production
+4/ Switching to a "production" Database
+5/ Publishing to flyio
+6/ Getting an "A" grade on securityheaders.com
+
+- Adding scroll to top for our routes
+ + Add React ScrollRestoration into our App.tsx
+
+- Adding private routes
+ + Create RequireAuth component in router to work on properly security
+ + Add this RequireAuth into Routes to protect our Routes
+
+- Prepping the client app for production
+ + Generate .env file for development & production store secret api
+
+- Building the production build of the react app
+ + Learn to Create & Build React App
+ https://create-react-app.dev/
+ + Update Build production scripts in package.json in client-app
+
+- npm run build
+ + Create a built production file folder named "wwwroot" inside API
+
+- Running the client app on the dotnet Kestrel server
+ + Add some Configurations in Program.cs
+ + Create a FallBackController inside API Controller : direct the API route to go to
+
+- Adding PostGresQL https://www.postgresql.org/
+ + Install Docker Desktop : help to connect with PostGresQL without installation
+ + Run Docker command : add PostgreSQL database container into Docker
+ docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:latest
+
+- Switching to PostGresQL
+ + Delete Migrations folder and drop current database 
+ + Install PostGresQL for Persistence on NugGet Gallery : Npgsql.EntityFrameworkCore.PostgreSQL 
+ + Update PostgreSQL connection string inside appsettings and ApplicationServiceExtensions
+ + Install again the migrations
+ dotnet ef migrations add PostgresInitial -p Persistence -s API
+
+- Deployment to flyio - Dockerise the app (Create a Docker image on our app and deploy it to flyio)
+ + Create a Dockerfile & .dockerignore at root of our app : help run on docker hub
+ + Add more Configurations for appsettings to be able to run Docker
+
+- Build & Run Docker image:
+ docker build -t dustinvu0320/reactivities .
+ docker run --rm -it -p 8080:80 dustinvu0320/reactivities
+
+- Push Docker image into the Docker hub on website
+ + Login to Docker : input username & password
+ docker login
+ + Push Docker image
+ docker push dustinvu0320/reactivities:latest
+
+- using fly launch to create deploy config : https://fly.io/docs/hands-on/
+ + Follow step to install, sign up, and sign in flyctl
+ + Launch app to fly.io and set up postgres database 
+ fly launch --image dustinvu0320/reactivities:latest
+
+- Add Configurations [env] in fly.toml (Move all config from appsettings to this)
+  ASPNETCORE_URLS="http://+:8080"
+  Cloudinary__CloudName=""
+  Cloudinary__ApiKey=""
+
+- Store secrect keys into fly secret list
+ fly secrets set TokenKey=...
+ fly secrets set Cloudinary__ApiSecret=...
+
+- View secrects list that store in fly.io
+  fly secrets list
+
+-EXPOSE 8080 into Dockerfile : help run app on port correctly
+
+- Update FLYIOConnectionString for services.AddDbContext in ApplicationServiceExtensions
+
+- Rebuild and push our app again to Docker Hub
+
+- Deploy to fly.io (NOT WORK for arm Mac OS)
+  fly deploy
+
+- Use Github alternative way to deploy Docker image to fly.io
+https://github.com/docker/build-push-action
+ + Create file docker-push.yml in workflows folder in .github folder
+ + Store secrets username & password of DockerHub inside settings of our app on Github repository
