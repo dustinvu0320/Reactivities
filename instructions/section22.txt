@@ -34,7 +34,8 @@
  docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:latest
 
 - Switching to PostGresQL
- + Delete Migrations folder and drop current database 
+ + Delete Migrations folder and drop current database
+ dotnet ef database drop -p Persistence -s API 
  + Install PostGresQL for Persistence on NugGet Gallery : Npgsql.EntityFrameworkCore.PostgreSQL 
  + Update PostgreSQL connection string inside appsettings and ApplicationServiceExtensions
  + Install again the migrations
