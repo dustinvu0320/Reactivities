@@ -47,6 +47,7 @@
 
 - Build & Run Docker image:
  docker build -t dustinvu0320/reactivities .
+ + Delete drop database then let Docker image create new database
  docker run --rm -it -p 8080:80 dustinvu0320/reactivities
 
 - Push Docker image into the Docker hub on website
