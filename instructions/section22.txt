@@ -92,9 +92,20 @@ https://github.com/docker/build-push-action
 
 - Fix Url errors in TestErrors
 
+- Look at logs for production mode: 
+fly logs -a reactivities-dv
+
 - Learn about Continuous Deployment with Fly.io and GitHub Actions
 https://fly.io/docs/app-guides/continuous-deployment-with-github-actions/
 
 - Set up automatic deployment in docker-push.yml
- + Get FLY_API_TOKEN by cm: fly auth token
+ + Get FLY_API_TOKEN by cm: 
+ fly auth token
  + Store this token into github secrets
+
+- Connect to database on fly.io:
+fly proxy 6543:5432 -a reactivities-dv-db
+
+- Security tightening https://securityheaders.com/
+ + Install NWebsec.AspNetCore.Middleware for API in NuGet
+ + Add all security inside Program.cs

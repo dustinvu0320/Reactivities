@@ -26,10 +26,36 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 app.UseMiddleware<ExceptionMiddleware>();
 
+app.UseXContentTypeOptions();
+// Allows site to control how much information browser includes when navigating away from app
+app.UseReferrerPolicy(opt => opt.NoReferrer());
+// Add a cross-site scripting protection header
+app.UseXXssProtection(opt => opt.EnabledWithBlockMode());
+// Prevent app being used inside an iframe (protect against clickjacking)
+app.UseXfo(opt => opt.Deny());
+// defense against cross-site scripting attacks
+app.UseCsp(opt => opt
+  .BlockAllMixedContent()
+  .StyleSources(s => s.Self().CustomSources("https://fonts.googleapis.com"))
+  .FontSources(s => s.Self().CustomSources("https://fonts.gstatic.com", "data:"))
+  .FormActions(s => s.Self())
+  .FrameAncestors(s => s.Self())
+  .ImageSources(s => s.Self().CustomSources("blob:", "https://res.cloudinary.com"))
+  .ScriptSources(s => s.Self())
+);
+
 if (app.Environment.IsDevelopment())
 {
   app.UseSwagger();
   app.UseSwaggerUI();
+}
+else
+{
+  app.Use(async (context, next) =>
+  {
+    context.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000");
+    await next.Invoke();
+  });
 }
 
 app.UseCors("CorsPolicy");
